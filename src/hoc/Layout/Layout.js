@@ -8,7 +8,7 @@ class Layout extends Component {
     render() {
         return (
             <Aux>
-                <Nav></Nav>
+                <Nav />
                 <div>{this.props.children}</div>
             </Aux>
         );

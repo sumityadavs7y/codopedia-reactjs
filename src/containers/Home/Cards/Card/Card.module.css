@@ -16,6 +16,7 @@
 .Card:hover{
     background-color: #f4fcf6;
     box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.075);
+    cursor: pointer;
 }
 .Card:hover .CardIcon{
     background-color: white;

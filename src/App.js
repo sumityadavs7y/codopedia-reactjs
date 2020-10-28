@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
+import { Route, Switch } from 'react-router-dom';
 import Layout from './hoc/Layout/Layout';
 import Home from './containers/Home/Home';
 import './App.css';
@@ -18,13 +19,21 @@ const theme = createMuiTheme({
   },
 });
 
+const AsyncSyllabus = React.lazy(() => import('./containers/Syllabus/Syllabus'));
+
 function App() {
+  let routes = (
+    <Switch>
+      <Route path='/' exact component={Home} />
+      <Route path='/syllabus' render={() => <Suspense fallback={<div>Loading...</div>}><AsyncSyllabus /></Suspense>} />
+    </Switch>
+  );
   return (
     <ThemeProvider theme={theme}>
 
       <div>
         <Layout>
-          <Home />
+          {routes}
         </Layout>
       </div>
     </ThemeProvider>
