@@ -1,3 +1,4 @@
+import { CenterFocusStrong, FormatAlignCenter } from '@material-ui/icons';
 import React from 'react';
 
 const Jumbotron = (props) => {
@@ -7,7 +8,8 @@ const Jumbotron = (props) => {
         // paddingBottom: '150px',
         // boxShadow: "0px 0px 0px 0px rgba(0,0,0,0)",
         backgroundColor: '#022d8a',
-        color: 'white'
+        color: 'white',
+        
     }
     return (
         <div style={jumbotronStyle}>
