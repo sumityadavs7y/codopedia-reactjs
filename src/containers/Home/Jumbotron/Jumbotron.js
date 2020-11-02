@@ -4,18 +4,20 @@ import React from 'react';
 const Jumbotron = (props) => {
     const jumbotronStyle = {
         margin: '0px',
-        height: '200px',
-        // paddingBottom: '150px',
-        // boxShadow: "0px 0px 0px 0px rgba(0,0,0,0)",
+        height: '300px',
         backgroundColor: '#022d8a',
         color: 'white',
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center'
+
         
     }
     return (
         <div style={jumbotronStyle}>
-            <div style={{ paddingLeft: '30px', paddingTop: '60px' }}>
-                <h1 style={{ marginTop: 0 }}>CodoPedia</h1>
-                <p>A Computer Science Portal to help Geeks.</p>
+            <div style={{ paddingLeft: '30px', paddingTop: '60px', alignContent:'center'}}>
+                <h1 style={{ marginTop: 0,alignContent:'center',fontSize:'4em'}}>CodoPedia</h1>
+                <p style={{fontSize:'20px',paddingLeft:'53px'}}>The Coder's Encyclopedia</p>
             </div>
         </div>
     );

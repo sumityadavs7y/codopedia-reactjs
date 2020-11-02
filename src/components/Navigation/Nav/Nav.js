@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Login from './Login/Login';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography';
@@ -51,6 +51,7 @@ const Nav = (props) => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
+<<<<<<< HEAD
             <CssBaseline />
             <ElevationScroll {...props}>
                 <AppBar className={classes.appBar}>
@@ -68,8 +69,24 @@ const Nav = (props) => {
                 </AppBar>
             </ElevationScroll>
             <Toolbar />
+=======
+            <AppBar className={classes.appBar} position="static" color="secondary">
+                <Toolbar>
+                    <Box display={{ xs: 'block', sm: 'block', md: 'none' }}>
+                        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                            <MenuIcon />
+                        </IconButton>
+                    </Box>
+                    <Typography variant="h6" className={classes.title}>
+                        <Logo /><strong>Codo</strong><span>Pedia</span>
+                    </Typography>
+                    
+                <Login/>
+                </Toolbar>
+            </AppBar>
+>>>>>>> 80b4eea... added login modal
         </div>
-    )
+    ) 
 }
 
 export default Nav;

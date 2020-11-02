@@ -3,6 +3,7 @@ import React, { Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Layout from './hoc/Layout/Layout';
 import Home from './containers/Home/Home';
+
 import './App.css';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
@@ -19,7 +20,10 @@ const theme = createMuiTheme({
   },
 });
 
+<<<<<<< HEAD
 const AsyncSyllabus = React.lazy(() => import('./containers/Syllabus/Syllabus'));
+=======
+>>>>>>> 80b4eea... added login modal
 
 function App() {
   let routes = (
@@ -30,7 +34,6 @@ function App() {
   );
   return (
     <ThemeProvider theme={theme}>
-
       <div>
         <Layout>
           {routes}

@@ -5,6 +5,8 @@ import { makeStyles, createStyles } from '@material-ui/core/styles';
 
 import Cards from './Cards/Cards';
 import Jumbotron from './Jumbotron/Jumbotron';
+import Footer from './Footer/Footer';
+
 
 const useStyles = makeStyles((theme) => createStyles({
     container: {
@@ -20,6 +22,7 @@ const Home = (props) => {
             <Container className={classes.container}>
                 <Cards />
             </Container>
+            <Footer/>
         </React.Fragment>
     );
 }

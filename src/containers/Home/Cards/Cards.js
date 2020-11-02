@@ -45,7 +45,11 @@ const Cards = props => {
     });
     return (
         <div>
+<<<<<<< HEAD
             <Grid style={{ alignItems: 'stretch', marginTop: '20px' }} container spacing={3}>
+=======
+            <Grid style={{ alignItems: 'stretch',paddingTop:'30px',paddingBottom:'35px'}} container spacing={3}>
+>>>>>>> 80b4eea... added login modal
                 {topics}
             </Grid>
         </div>
