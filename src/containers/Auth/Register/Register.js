@@ -42,6 +42,7 @@ const Register = (props) => {
     const classes = useStyles();
 
     const [values, setValues] = React.useState({
+        name: '',
         email: '',
         password: '',
         showPassword: false,
@@ -76,7 +77,7 @@ const Register = (props) => {
         console.log(values);
         let newValues = {};
         let isValid = true;
-        if (values.email.length < 3) {
+        if (values.name.length < 3) {
             isValid = false;
             newValues = { ...newValues, nameError: true, nameHelperText: 'Length is short' }
         }

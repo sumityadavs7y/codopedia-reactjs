@@ -8,7 +8,7 @@ class Layout extends Component {
     render() {
         return (
             <Aux>
-                <Nav />
+                <Nav darkMode={this.props.darkMode} switchThemeMode={this.props.switchThemeMode} />
                 <div>{this.props.children}</div>
             </Aux>
         );

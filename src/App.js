@@ -7,23 +7,36 @@ import Home from './containers/Home/Home';
 import './App.css';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-const theme = createMuiTheme({
-  fontFamily: [
-    '"Open Sans"',
-    'sans-serif',
-  ].join(','),
-  typography: {
-    fontFamily: [
-      '"Open Sans"',
-      'sans-serif',
-    ].join(','),
-  },
-});
-
 const AsyncSyllabus = React.lazy(() => import('./containers/Syllabus/Syllabus'));
 const AsyncAuth = React.lazy(() => import('./containers/Auth/Auth'));
 
 function App() {
+
+  const [customTheme, setTheme] = React.useState({
+    darkMode: localStorage.getItem('darkMode') === 'true' ? true : false
+  });
+  const theme = createMuiTheme({
+    palette: {
+      type: customTheme.darkMode ? 'dark' : 'light'
+    },
+    main: '#022d8a',
+    fontFamily: [
+      '"Open Sans"',
+      'sans-serif',
+    ].join(','),
+    typography: {
+      fontFamily: [
+        '"Open Sans"',
+        'sans-serif',
+      ].join(','),
+    },
+  });
+
+  const switchThemeMode = (darkMode) => {
+    setTheme({ darkMode: darkMode });
+    localStorage.setItem('darkMode', darkMode);
+  }
+
   let routes = (
     <Switch>
       <Route path='/' exact component={Home} />
@@ -34,7 +47,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div>
-        <Layout>
+        <Layout darkMode={customTheme.darkMode} switchThemeMode={switchThemeMode}>
           {routes}
         </Layout>
       </div>

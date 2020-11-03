@@ -8,10 +8,12 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Switch from '@material-ui/core/Switch';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-
+import Brightness4Icon from '@material-ui/icons/Brightness4';
+import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh';
 import Logo from '../../Logo/Logo';
 
 function ElevationScroll(props) {
@@ -32,15 +34,15 @@ const useStyles = makeStyles((theme) => createStyles({
         flexGrow: 1,
     },
     appBar: {
-        backgroundColor: 'white',
-        color: '#022d8a'
+        backgroundColor: theme.palette.background.paper,
     },
     logoIcon: {
         textDecoration: 'none',
-        color: '#022d8a'
+        color: theme.palette.type === 'dark' ? 'white' : theme.main,
     },
     menuButton: {
         marginRight: theme.spacing(0),
+        color: theme.palette.type === 'dark' ? 'white' : theme.main,
     },
     accountIcon: {
         marginRight: theme.spacing(1),
@@ -53,6 +55,17 @@ const useStyles = makeStyles((theme) => createStyles({
 
 const Nav = (props) => {
     const classes = useStyles();
+    const [values, setValues] = React.useState({
+        darkMode: props.darkMode
+    });
+
+    const handleChange = (event) => {
+        setValues({ darkMode: event.target.checked });
+        props.switchThemeMode(event.target.checked);
+    }
+
+    const modeIcon = values.darkMode ? <BrightnessHighIcon /> : <Brightness4Icon style={{ color: 'black' }} />;
+
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -69,7 +82,15 @@ const Nav = (props) => {
                                 <Logo /><strong>Codo</strong><span>Pedia</span>
                             </NavLink>
                         </Typography>
-                        <NavLink to='/auth/login' style={{ textDecoration: 'none' }}>
+                        <Switch
+                            checked={values.darkMode}
+                            onChange={handleChange}
+                            color="primary"
+                            name="darkMode"
+                            inputProps={{ 'aria-label': 'primary checkbox' }}
+                        />
+                        {modeIcon}
+                        <NavLink to='/auth/login' className={classes.logoIcon}>
                             <Button color="inherit"><AccountCircleIcon className={classes.accountIcon} />Login</Button>
                         </NavLink>
                     </Toolbar>
