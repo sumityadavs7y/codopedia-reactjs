@@ -36,7 +36,7 @@ const Cards = props => {
     const topics = cardsContent.map(cardContent => {
         return (
             // <NavLink to="/syllabus">
-            <Grid item xs={12} sm={6} md={4}>
+            <Grid key={cardContent.title} item xs={12} sm={6} md={4}>
                 <NavLink style={{ textDecoration: 'none' }} to={cardContent.to}>
                     <Card title={cardContent.title} content={cardContent.content} />
                 </NavLink>
@@ -45,11 +45,7 @@ const Cards = props => {
     });
     return (
         <div>
-<<<<<<< HEAD
-            <Grid style={{ alignItems: 'stretch', marginTop: '20px' }} container spacing={3}>
-=======
-            <Grid style={{ alignItems: 'stretch',paddingTop:'30px',paddingBottom:'35px'}} container spacing={3}>
->>>>>>> 80b4eea... added login modal
+            <Grid style={{ alignItems: 'stretch', paddingTop: '30px', paddingBottom: '35px' }} container spacing={3}>
                 {topics}
             </Grid>
         </div>

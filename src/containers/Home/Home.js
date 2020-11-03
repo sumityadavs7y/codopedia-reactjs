@@ -22,7 +22,7 @@ const Home = (props) => {
             <Container className={classes.container}>
                 <Cards />
             </Container>
-            <Footer/>
+            <Footer />
         </React.Fragment>
     );
 }

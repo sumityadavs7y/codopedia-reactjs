@@ -20,16 +20,15 @@ const theme = createMuiTheme({
   },
 });
 
-<<<<<<< HEAD
 const AsyncSyllabus = React.lazy(() => import('./containers/Syllabus/Syllabus'));
-=======
->>>>>>> 80b4eea... added login modal
+const AsyncAuth = React.lazy(() => import('./containers/Auth/Auth'));
 
 function App() {
   let routes = (
     <Switch>
       <Route path='/' exact component={Home} />
       <Route path='/syllabus' render={() => <Suspense fallback={<div>Loading...</div>}><AsyncSyllabus /></Suspense>} />
+      <Route path='/auth' render={() => <Suspense fallback={<div>Loading...</div>}><AsyncAuth /></Suspense>} />
     </Switch>
   );
   return (
