@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar'
@@ -90,9 +91,15 @@ const Nav = (props) => {
                             inputProps={{ 'aria-label': 'primary checkbox' }}
                         />
                         {modeIcon}
-                        <NavLink to='/auth/login' className={classes.logoIcon}>
-                            <Button color="inherit"><AccountCircleIcon className={classes.accountIcon} />Login</Button>
-                        </NavLink>
+                        {!props.isAuthenticated
+                            ? <NavLink to='/auth/login' className={classes.logoIcon}>
+                                <Button color="inherit"><AccountCircleIcon className={classes.accountIcon} />Login</Button>
+                            </NavLink>
+                            : <NavLink to='/auth/logout' className={classes.logoIcon}>
+                                <Button color="inherit"><AccountCircleIcon className={classes.accountIcon} />Logout</Button>
+                            </NavLink>
+                        }
+
                     </Toolbar>
                 </AppBar>
             </ElevationScroll>
@@ -102,4 +109,10 @@ const Nav = (props) => {
     )
 }
 
-export default Nav;
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.accessToken !== null
+    };
+};
+
+export default connect(mapStateToProps)(Nav);

@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import { Route, Switch } from 'react-router-dom';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { withRouter } from "react-router";
+import Logout from './Logout/Logout';
 
 const useStyles = makeStyles((theme) => createStyles({
     container: {
@@ -23,7 +24,6 @@ const AsyncRegister = React.lazy(() => import('./Register/Register'));
 
 const Auth = (props) => {
     const classes = useStyles();
-    console.log(props);
     return (
         <React.Fragment>
             <div className={classes.container}>
@@ -32,6 +32,7 @@ const Auth = (props) => {
                         {/* <Route path='/' exact render={() => <Suspense fallback={<div>Loading...</div>}><AsyncLogin /></Suspense>} /> */}
                         <Route path={`${props.match.path}/login`} render={() => <Suspense fallback={<div>Loading...</div>}><AsyncLogin /></Suspense>} />
                         <Route path={`${props.match.path}/register`} render={() => <Suspense fallback={<div>Loading...</div>}><AsyncRegister /></Suspense>} />
+                        <Route path={`${props.match.path}/logout`} component={Logout} />
                     </Switch>
                 </Grid>
             </div>

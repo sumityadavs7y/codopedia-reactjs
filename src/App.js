@@ -3,14 +3,16 @@ import React, { Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Layout from './hoc/Layout/Layout';
 import Home from './containers/Home/Home';
+import { connect } from 'react-redux';
 
 import './App.css';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import * as actions from './store/actions/index';
 
 const AsyncSyllabus = React.lazy(() => import('./containers/Syllabus/Syllabus'));
 const AsyncAuth = React.lazy(() => import('./containers/Auth/Auth'));
 
-function App() {
+function App(props) {
 
   const [customTheme, setTheme] = React.useState({
     darkMode: localStorage.getItem('darkMode') === 'true' ? true : false
@@ -37,6 +39,10 @@ function App() {
     localStorage.setItem('darkMode', darkMode);
   }
 
+  React.useEffect(() => {
+    props.onTryAutoSignup();
+  });
+
   let routes = (
     <Switch>
       <Route path='/' exact component={Home} />
@@ -55,4 +61,17 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.accessToken !== null
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoSignup: () => dispatch(actions.authCheckState())
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
